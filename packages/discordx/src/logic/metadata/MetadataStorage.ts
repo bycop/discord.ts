@@ -41,6 +41,7 @@ export class MetadataStorage {
   // custom Handlers
   private _buttonComponents: Array<DComponent> = [];
   private _selectMenuComponents: Array<DComponent> = [];
+  private _modalComponents: Array<DComponent> = [];
 
   // simple command
   private _simpleCommands: Array<DSimpleCommand> = [];
@@ -169,6 +170,10 @@ export class MetadataStorage {
     return this._selectMenuComponents;
   }
 
+  get modalComponents(): readonly DComponent[] {
+    return this._modalComponents;
+  }
+
   private get discordMembers(): readonly Method[] {
     return [
       ...this._applicationCommandSlashes,
@@ -178,6 +183,7 @@ export class MetadataStorage {
       ...this._events,
       ...this._buttonComponents,
       ...this._selectMenuComponents,
+      ...this._modalComponents,
     ];
   }
 
@@ -231,6 +237,10 @@ export class MetadataStorage {
 
   addComponentSelectMenu(selectMenu: DComponent): void {
     this._selectMenuComponents.push(selectMenu);
+  }
+
+  addComponentModal(selectMenu: DComponent): void {
+    this._modalComponents.push(selectMenu);
   }
 
   addGuard(guard: DGuard): void {
@@ -322,6 +332,10 @@ export class MetadataStorage {
     await Modifier.applyFromModifierListToList(
       this._modifiers,
       this._selectMenuComponents
+    );
+    await Modifier.applyFromModifierListToList(
+      this._modifiers,
+      this._modalComponents
     );
 
     this._applicationCommandSlashesFlat = this._applicationCommandSlashes;
