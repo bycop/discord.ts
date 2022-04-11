@@ -18,19 +18,18 @@ export class Main {
       intents: [
         IntentsBitField.Flags.Guilds,
         IntentsBitField.Flags.GuildMessages,
+        IntentsBitField.Flags.GuildMembers,
       ],
-      silent: false,
-    });
-
-    this._client.on("messageCreate", (message) => {
-      this._client.executeCommand(message);
     });
 
     this._client.once("ready", async () => {
-      await this._client.initApplicationCommands();
-      await this._client.initApplicationPermissions();
+      await this._client.initApplicationCommands({
+        global: { log: true },
+        guild: { log: true },
+      });
+      await this._client.initApplicationPermissions(true);
 
-      console.log("Bot started");
+      console.log(">> Bot started");
     });
 
     this._client.on("interactionCreate", (interaction) => {

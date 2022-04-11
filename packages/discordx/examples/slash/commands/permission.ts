@@ -5,6 +5,11 @@ import type {
   Role,
   User,
 } from "discord.js";
+import {
+  ApplicationCommandOptionType,
+  ApplicationCommandPermissionType,
+  ChannelType,
+} from "discord.js";
 
 import {
   DefaultPermissionResolver,
@@ -28,7 +33,7 @@ export class Example {
   @Permission({
     id: "462341082919731200",
     permission: true,
-    type: "USER",
+    type: ApplicationCommandPermissionType.User,
   })
   @Permission(async (): Promise<ApplicationCommandPermissions[]> => {
     const getResponse = () => {
@@ -43,14 +48,18 @@ export class Example {
       {
         id: "462341082919731200",
         permission: true,
-        type: "USER",
+        type: ApplicationCommandPermissionType.User,
       },
     ];
   })
   voiceChannel(
     @SlashOption("channel", {
-      channelTypes: ["GUILD_CATEGORY", "GUILD_VOICE", "GUILD_TEXT"],
-      type: "CHANNEL",
+      channelTypes: [
+        ChannelType.GuildCategory,
+        ChannelType.GuildVoice,
+        ChannelType.GuildText,
+      ],
+      type: ApplicationCommandOptionType.Channel,
     })
     roleOrUser: GuildMember | User | Role,
     interaction: CommandInteraction
