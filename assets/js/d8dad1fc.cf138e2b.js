@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[536],{3671:function(u,n,s){s.r(n),s.d(n,{default:function(){return c}});var t=s(7294);function c(){return t.useEffect((function(){window.location.href="https://github.com/oceanroleplay/discord.ts/issues"}),[]),null}}}]);

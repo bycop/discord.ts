@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[3048],{328:function(u,n,t){t.r(n),t.d(n,{default:function(){return e}});var c=t(7294);function e(){return c.useEffect((function(){window.location.href="https://discord.gg/yHQY9fexH9"}),[]),null}}}]);
